@@ -16,14 +16,31 @@
   <body>
     <div class="main">
       <div class="container">
-        <h1 class="heading">Appointment Scheduler</h1>
-        <label for="appointmentDate">Select Appointment Date:</label>
-        <input type="date" id="appointmentDate" />
-        <button onclick="calculateDates()">Show Schedule</button>
+        
+    
+            <h1 class="heading">Appointment Scheduler</h1>
+       
+         
+            <label for="appointmentDate">Select Appointment Date</label>
+            <div class="input">
+              <input
+                type="date"
+                id="appointmentDate"
+                placeholder="Pick Appointment Date"
+              />
+            </div>
+          
+          
+            <button onclick="calculateDates()">Show Schedule</button>
+          
+      
+            <div id="result"></div>
+         
+        </div>
 
-        <h3>Results:</h3>
-        <p id="result"></p>
-      </div>
+       
+
+       
     </div>
 
     <script src="./script.js"></script>
