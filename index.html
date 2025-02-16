@@ -1,98 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Date Schedule</title>
-</head>
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-        background-color: #f4f4f4;
-    }
-    label, input, button {
-        margin: 10px;
-    }
-    input, button {
-        padding: 10px;
-        font-size: 16px;
-    }
-    button {
-        background-color: #007BFF;
-        color: white;
-        border: none;
-        cursor: pointer;
-        transition: background 0.3s;
-    }
-    button:hover {
-        background-color: #0056b3;
-    }
-    h3 {
-        margin-top: 20px;
-    }
-    p {
-        background: white;
-        padding: 15px;
-        border-radius: 5px;
-        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-        width: 60%;
-        text-align: center;
-    }
-</style>
-<body>
-    <label for="appointmentDate">Select Appointment Date:</label>
-    <input type="date" id="appointmentDate">
-    <button onclick="calculateDates()">Show Schedule</button>
-    
-    <h3>Results:</h3>
-    <p id="result"></p>
-    
-    <script>
-        function calculateDates() {
-            let inputDate = document.getElementById("appointmentDate").value;
-            if (!inputDate) {
-                document.getElementById("result").innerText = "Please select a date.";
-                return;
-            }
-            
-            let appointmentDate = new Date(inputDate);
-            let ticketDate = new Date(appointmentDate);
-            ticketDate.setDate(ticketDate.getDate() - 3);
-            
-            let reachDelhiDate = new Date(ticketDate);
-            reachDelhiDate.setDate(reachDelhiDate.getDate() + 1);
-            
-            let classStartDate = new Date(appointmentDate);
-            classStartDate.setDate(classStartDate.getDate() - 5);
-            
-            let classEndDate = new Date(appointmentDate);
-            classEndDate.setDate(classEndDate.getDate() - 4);
-            
-            // Adjust class start date if it falls on a Saturday
-            if (classStartDate.getDay() === 6 || classEndDate.getDay()===6) { // Saturday Check
-                classStartDate.setDate(classStartDate.getDate() - 1);
-               
-            }
-            
-            // Ensure class end date is still after class start date
-            // if (classEndDate.getDay() === 6) {
-            //     classEndDate.setDate(classEndDate.getDate() - 1);
-            // }
-            
-            let resultText = `
-                Appointment on Delhi: ${appointmentDate.toDateString()} <br>
-                Ticket Date to Delhi: ${ticketDate.toDateString()} <br>
-                Reach on Delhi: ${reachDelhiDate.toDateString()} <br>
-                Class Date: ${classStartDate.toDateString()} 
-            `;
-            
-            document.getElementById("result").innerHTML = resultText;
-        }
-    </script>
-</body>
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div class="main">
+      <div class="container">
+        <h1 class="heading">Appointment Scheduler</h1>
+        <label for="appointmentDate">Select Appointment Date:</label>
+        <input type="date" id="appointmentDate" />
+        <button onclick="calculateDates()">Show Schedule</button>
+
+        <h3>Results:</h3>
+        <p id="result"></p>
+      </div>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
 </html>
